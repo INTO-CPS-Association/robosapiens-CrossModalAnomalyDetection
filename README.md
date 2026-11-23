@@ -16,12 +16,6 @@ It supports trustworthy and dependable cyber-physical systems through runtime mo
 
 ---
 
-## Relationship to the research implementation
-
-This INTO-CPS case-study presentation is based on the original **CrossModalAnomalyDetection** research implementation. The ROS 2 packages, node entry points, launch scripts, parameter names, and execution commands below are intentionally unchanged. The adaptations concern the README and repository presentation within the RoboSAPIENS and INTO-CPS tool collection.
-
----
-
 ## Method Overview
 
 The pipeline rectifies and cleans the incoming RGB images, estimates relative monocular depth using Depth Anything V2, and projects planar LiDAR measurements into the camera image. It then monitors consistency between the LiDAR-derived measurements and the RGB-derived depth estimates, publishing anomaly information and a status visualization for RViz. An optional fault-injection workflow supports controlled evaluation using separate modified sensor streams.
