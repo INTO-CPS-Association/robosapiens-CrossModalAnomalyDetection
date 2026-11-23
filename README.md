@@ -6,7 +6,7 @@ CrossModalAnomalyDetection is an open-source ROS 2 Jazzy tool for monitoring geo
 
 The implementation was developed and evaluated using a TurtleBot 4 equipped with an OAK-D Pro RGB camera and a 2D LiDAR. Sensor topics, camera calibration, and TF frames are configurable for other ROS 2 platforms. The pipeline comprises RGB rectification and border cleaning, relative monocular depth estimation, LiDAR-to-camera projection, cross-modal consistency monitoring, and a motion/anomaly status image for RViz. An optional fault-injection component publishes modified *copies* of RGB images and LiDAR scans for controlled testing without changing the original sensor streams.
 
-## Relation to RoboSAPIENS**
+## Relation to INTO-CPS
 
 **CrossModalAnomalyDetection** is made available through the INTO-CPS Association as an open-source tool supporting the development of trustworthy and dependable cyber-physical systems.
 
