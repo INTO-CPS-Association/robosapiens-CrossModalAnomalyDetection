@@ -6,9 +6,11 @@ CrossModalAnomalyDetection is an open-source ROS 2 Jazzy tool for monitoring geo
 
 The implementation was developed and evaluated using a TurtleBot 4 equipped with an OAK-D Pro RGB camera and a 2D LiDAR. Sensor topics, camera calibration, and TF frames are configurable for other ROS 2 platforms. The pipeline comprises RGB rectification and border cleaning, relative monocular depth estimation, LiDAR-to-camera projection, cross-modal consistency monitoring, and a motion/anomaly status image for RViz. An optional fault-injection component publishes modified *copies* of RGB images and LiDAR scans for controlled testing without changing the original sensor streams.
 
-## Relation to RoboSAPIENS
+## Relation to RoboSAPIENS**
 
-The tool supports research on **trustworthy robotic sensing and perception** by monitoring discrepancies between complementary sensor modalities at runtime. Such discrepancies may indicate unreliable LiDAR measurements or camera-based depth estimates. The detector reports potential cross-modal anomalies; it does not establish the underlying cause, perform automatic recovery, or provide safety guarantees. It is **experimental research software, not a certified safety system**.
+**CrossModalAnomalyDetection** is made available through the INTO-CPS Association as an open-source tool supporting the development of trustworthy and dependable cyber-physical systems.
+
+The tool contributes to runtime monitoring of robotic sensing and perception by assessing cross-modal consistency between LiDAR measurements and monocular depth estimates derived from RGB images. By identifying potential sensing anomalies and perception inconsistencies, it supports the reliability and safety of autonomous robotic systems.
 
 ## Repository layout
 
