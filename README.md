@@ -1,21 +1,37 @@
-# CrossModalAnomalyDetection
+# RoboSAPIENS-CrossModalAnomalyDetection: INTO-CPS Case Study for RGB–LiDAR Cross-Modal Anomaly Detection
 
 **RGB–LiDAR Cross-Modal Anomaly Detection Using Monocular Depth Estimation**
 
-CrossModalAnomalyDetection is an open-source ROS 2 Jazzy tool for monitoring geometric consistency between planar LiDAR measurements and monocular depth estimates derived from RGB images. It was developed within the [RoboSAPIENS](https://robosapiens-eu.tech/) research project and is intended for publication through the [INTO-CPS Association](https://github.com/INTO-CPS-Association).
+This INTO-CPS case-study repository presents **CrossModalAnomalyDetection**, an open-source ROS 2 Jazzy tool for monitoring geometric consistency between planar LiDAR measurements and monocular depth estimates derived from RGB images. The tool was developed within the [RoboSAPIENS](https://robosapiens-eu.tech/) research project and is made available through the [INTO-CPS Association](https://github.com/INTO-CPS-Association).
 
 The implementation was developed and evaluated using a TurtleBot 4 equipped with an OAK-D Pro RGB camera and a 2D LiDAR. Sensor topics, camera calibration, and TF frames are configurable for other ROS 2 platforms. The pipeline comprises RGB rectification and border cleaning, relative monocular depth estimation, LiDAR-to-camera projection, cross-modal consistency monitoring, and a motion/anomaly status image for RViz. An optional fault-injection component publishes modified *copies* of RGB images and LiDAR scans for controlled testing without changing the original sensor streams.
 
+---
+
 ## Relation to INTO-CPS
 
-**CrossModalAnomalyDetection** is made available through the INTO-CPS Association as an open-source tool supporting the development of trustworthy and dependable cyber-physical systems.
+This repository is part of the INTO-CPS ecosystem and was developed within the **RoboSAPIENS** project (*Robotic Safe Adaptation In Unprecedented Situations*).
 
-The tool contributes to runtime monitoring of robotic sensing and perception by assessing cross-modal consistency between LiDAR measurements and monocular depth estimates derived from RGB images. By identifying potential sensing anomalies and perception inconsistencies, it supports the reliability and safety of autonomous robotic systems.
+It supports trustworthy and dependable cyber-physical systems through runtime monitoring of robotic sensing and perception. By assessing cross-modal consistency between LiDAR measurements and monocular depth estimates from RGB images, the tool helps identify potentially unreliable sensor measurements and perception inconsistencies that may affect autonomous operation.
 
-## Repository layout
+---
+
+## Relationship to the research implementation
+
+This INTO-CPS case-study presentation is based on the original **CrossModalAnomalyDetection** research implementation. The ROS 2 packages, node entry points, launch scripts, parameter names, and execution commands below are intentionally unchanged. The adaptations concern the README and repository presentation within the RoboSAPIENS and INTO-CPS tool collection.
+
+---
+
+## Method Overview
+
+The pipeline rectifies and cleans the incoming RGB images, estimates relative monocular depth using Depth Anything V2, and projects planar LiDAR measurements into the camera image. It then monitors consistency between the LiDAR-derived measurements and the RGB-derived depth estimates, publishing anomaly information and a status visualization for RViz. An optional fault-injection workflow supports controlled evaluation using separate modified sensor streams.
+
+---
+
+## Repository Structure
 
 ```text
-CrossModalAnomalyDetection/
+robosapiens-CrossModalAnomalyDetection/
 ├── src/
 │   ├── rgb_preprocessing/             # ROS image rectification + border cleaner
 │   ├── depth_estimation/              # Depth Anything V2 adapter + node
@@ -53,9 +69,9 @@ sudo apt install -y python3-colcon-common-extensions python3-opencv python3-nump
 Clone the repository into a ROS 2 workspace of your choice, or use the repository as its own standalone `colcon` workspace:
 
 ```bash
-# Clone the INTO-CPS Association repository after publication:
-git clone https://github.com/INTO-CPS-Association/CrossModalAnomalyDetection.git
-cd CrossModalAnomalyDetection
+# Clone the INTO-CPS Association repository:
+git clone https://github.com/INTO-CPS-Association/robosapiens-CrossModalAnomalyDetection.git
+cd robosapiens-CrossModalAnomalyDetection
 
 # Ensure launch wrappers are executable (especially after browser-based uploads).
 chmod +x scripts/*.sh
@@ -116,7 +132,7 @@ The camera-to-LiDAR TF and camera intrinsics must be valid. The example projecto
 
 ## Run with real sensor measurements (no simulation)
 
-Start the robot's camera, LiDAR, odometry and TF publishers first. Open **five terminals**, with `cd ~/CrossModalAnomalyDetection` and your ROS/Python environment activated in each. Run the following stages in order, one per terminal.
+Start the robot's camera, LiDAR, odometry and TF publishers first. Open **five terminals**, with `cd ~/robosapiens-CrossModalAnomalyDetection` and your ROS/Python environment activated in each. Run the following stages in order, one per terminal.
 
 **1. Rectify and clean RGB** (both nodes in one launch):
 
@@ -330,4 +346,4 @@ For more information, see the [RoboSAPIENS project](https://robosapiens-eu.tech/
 
 ## Citation
 
-When using this tool in a publication, please reference the [CrossModalAnomalyDetection repository](https://github.com/INTO-CPS-Association/CrossModalAnomalyDetection) and identify the release or commit used.
+When using this tool in a publication, please reference the [RoboSAPIENS-CrossModalAnomalyDetection repository](https://github.com/INTO-CPS-Association/robosapiens-CrossModalAnomalyDetection) and identify the release or commit used.
